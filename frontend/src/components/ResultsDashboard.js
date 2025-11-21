@@ -5,7 +5,6 @@ import {
     CardContent,
     CardHeader,
     Grid,
-    Paper,
     Stack,
     ToggleButton,
     ToggleButtonGroup,

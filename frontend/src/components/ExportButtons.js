@@ -5,7 +5,6 @@ import {
     Paper,
     Typography,
     Divider,
-    IconButton,
     Tooltip
 } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';

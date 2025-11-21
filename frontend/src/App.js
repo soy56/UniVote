@@ -14,7 +14,6 @@ import {
   CssBaseline,
   Grid,
   IconButton,
-  LinearProgress,
   Snackbar,
   Stack,
   Toolbar,
@@ -34,7 +33,6 @@ import ElectionStats from './components/ElectionStats';
 import AuthDialog from './components/AuthDialog';
 import VoteReceipt from './components/VoteReceipt';
 import SocialShare from './components/SocialShare';
-import EnhancedCountdown from './components/EnhancedCountdown';
 import {
   signIn as authSignIn,
   signUp as authSignUp,
