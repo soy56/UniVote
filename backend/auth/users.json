@@ -1,0 +1,114 @@
+{
+  "users": [
+    {
+      "id": "6adf6314-9d31-47f4-9a4f-1d6ff780cafa",
+      "username": "superadmin",
+      "email": "admin@univote.io",
+      "passwordHash": "$2a$10$CwTycUXWue0Thq9StjUM0uJ8VJvLCB/FrBwDnhgypKekJy5y2D6LG",
+      "roles": [
+        "admin"
+      ],
+      "createdAt": "2025-11-13T00:00:00.000Z",
+      "updatedAt": "2025-11-13T00:00:00.000Z"
+    },
+    {
+      "id": "2446e362-3be0-4679-abc2-87f09ebad774",
+      "username": "SouvikPatra",
+      "email": "souvik56patra@gmail.com",
+      "passwordHash": "$2a$10$URVtoAe1h751pKyNmOp8TOooQeVEYtj8IOl0bHtAhXPjZ6pvbbKya",
+      "roles": [
+        "developer"
+      ],
+      "department": "Mechanical",
+      "year": "4",
+      "createdAt": "2025-11-13T15:20:45.032Z",
+      "updatedAt": "2025-11-21T19:13:19.288Z"
+    },
+    {
+      "id": "7c47e091-2b01-414f-9ba4-7a23e8c00e96",
+      "username": "SouvikPatra@",
+      "email": "ISHANPARRA@GMAIL.COM",
+      "passwordHash": "$2a$10$URVtoAe1h751pKyNmOp8TOooQeVEYtj8IOl0bHtAhXPjZ6pvbbKya",
+      "roles": [
+        "voter"
+      ],
+      "department": "Civil",
+      "year": "2",
+      "createdAt": "2025-11-13T17:20:30.786Z",
+      "updatedAt": "2025-11-13T17:20:30.786Z"
+    },
+    {
+      "id": "329899b9-140a-42f5-a825-0679c0126f78",
+      "username": "IshanPatra@1",
+      "email": "souvikpatrasp3@gmail.com",
+      "passwordHash": "$2a$10$qVzItdZ5vlFm4mKTJ6i5JujdvNSYUCvSSoJJXepadd3koDJ.IhE36",
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-13T18:29:42.345Z",
+      "updatedAt": "2025-11-13T18:29:42.345Z"
+    },
+    {
+      "id": "0e662f56-e026-4430-b10a-97b15758726a",
+      "username": "wallet-d352a7",
+      "email": "",
+      "walletAddress": "0xD352a7E8dBdEACd4e8d37D3594620065c7C17f6f",
+      "passwordHash": null,
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-13T19:03:12.364Z",
+      "updatedAt": "2025-11-13T19:03:12.364Z"
+    },
+    {
+      "id": "ae603db9-2d6c-4ca0-a584-9d718f5b960c",
+      "username": "wallet-2f5a86",
+      "email": "",
+      "walletAddress": "0x2F5A86462c5eE805A28098a0B01e7e4F0101bCA0",
+      "passwordHash": null,
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-13T19:05:46.612Z",
+      "updatedAt": "2025-11-17T13:58:31.361Z"
+    },
+    {
+      "id": "1362c6ae-8971-4937-8215-f5f71af140e7",
+      "username": "SouvikPatra12",
+      "email": "souvik56patra1@gmail.com",
+      "passwordHash": "$2a$10$Dk6WMqggReUyIFWQAUVb3uOBZK7MTxXpoSdsMTuEC05BbB66VOGuy",
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-17T14:00:31.379Z",
+      "updatedAt": "2025-11-17T14:00:31.379Z"
+    },
+    {
+      "id": "47cfc9f3-6c80-47cf-b842-21da7ba357d4",
+      "username": "student_test",
+      "email": "student@test.com",
+      "passwordHash": "$2a$10$kgBYy2/d4ZDRTvyxBVGWuu3FAYMeEddHfcaDnZj7E.MRsYu3DQSkG",
+      "department": "Computer Science",
+      "acharyaId": "ACH-TEST-001",
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-21T17:37:50.749Z",
+      "updatedAt": "2025-11-21T17:37:50.749Z"
+    },
+    {
+      "id": "28df7421-08ab-47fe-b7a4-fca909639479",
+      "username": "dev_master",
+      "email": "dev@univote.io",
+      "passwordHash": "$2a$10$Ayyzv9KPbfwO3OQ7U8ISlO7ulzHfoy6jZ.IMdhxWCaHKj8sPuaD4m",
+      "department": "IT",
+      "acharyaId": "DEV-001",
+      "roles": [
+        "admin",
+        "developer"
+      ],
+      "createdAt": "2025-11-21T18:08:28.885Z",
+      "updatedAt": "2025-11-21T18:08:28.885Z"
+    }
+  ]
+}
