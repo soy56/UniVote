@@ -13,7 +13,13 @@ const { Server } = require('socket.io');
 const { generatePDF, generateCSV, generateDetailedVoteCSV } = require('../utils/exportUtils');
 
 const PORT = process.env.PORT || 4000;
-const DEFAULT_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+const DEFAULT_ALLOWED_ORIGINS = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'https://frontend-rn64czp8u-soy56s-projects.vercel.app',
+  'https://safelink-56.web.app',
+  'https://safelink-56.firebaseapp.com'
+];
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '';
 const JWT_SECRET = process.env.JWT_SECRET || 'replace-this-secret';
 const JWT_TTL = process.env.JWT_TTL || '12h';
