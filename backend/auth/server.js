@@ -8,39 +8,16 @@ const crypto = require('crypto');
 const { ethers } = require('ethers');
 const { v4: uuid } = require('uuid');
 const QRCode = require('qrcode');
-const http = require('http');
-const { Server } = require('socket.io');
-const { generatePDF, generateCSV, generateDetailedVoteCSV } = require('../utils/exportUtils');
-
-const PORT = process.env.PORT || 4000;
-const DEFAULT_ALLOWED_ORIGINS = [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000',
-  'https://frontend-rn64czp8u-soy56s-projects.vercel.app',
-  'https://safelink-56.web.app',
-  'https://safelink-56.firebaseapp.com'
-];
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '';
-const JWT_SECRET = process.env.JWT_SECRET || 'replace-this-secret';
-const JWT_TTL = process.env.JWT_TTL || '12h';
-
-const USERS_FILE = path.join(__dirname, 'users.json');
-const DATA_FILE = path.join(__dirname, 'election.json');
-
-const defaultElectionData = {
-  election: {
-    title: 'UniVote - "Uni" for university/college elections',
-    description: 'Shape the student leadership future with a portal-first experience.',
-    bannerImage: '',
-    phase: 'Draft',
+bannerImage: '',
+  phase: 'Draft',
     votingStartsAt: 0,
-    votingEndsAt: 0,
-    lastVoteAt: 0,
-    lastVoter: null
+      votingEndsAt: 0,
+        lastVoteAt: 0,
+          lastVoter: null
   },
-  positions: [],
+positions: [],
   candidates: [],
-  votes: []
+    votes: []
 };
 
 // ... (existing code)
