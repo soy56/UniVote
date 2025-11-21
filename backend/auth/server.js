@@ -2,36 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs/promises');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const { ethers } = require('ethers');
-const { v4: uuid } = require('uuid');
-const QRCode = require('qrcode');
-bannerImage: '',
-  phase: 'Draft',
-    votingStartsAt: 0,
-      votingEndsAt: 0,
-        lastVoteAt: 0,
-          lastVoter: null
-  },
-positions: [],
-  candidates: [],
-    votes: []
-};
-
-// ... (existing code)
-
-const readJson = async (filePath, defaultValue) => {
-  try {
-    const content = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(content);
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      return defaultValue;
-    }
-    throw error;
+try {
+  const content = await fs.readFile(filePath, 'utf8');
+  return JSON.parse(content);
+} catch (error) {
+  if (error.code === 'ENOENT') {
+    return defaultValue;
   }
+  throw error;
+}
 };
 
 const writeJson = async (filePath, data) => {
