@@ -1,4 +1,5 @@
 services:
+  # Backend API Service
   - type: web
     name: univote-backend
     env: node
@@ -14,3 +15,31 @@ services:
         generateValue: true
       - key: NODE_VERSION
         value: 20.11.0
+
+  # Frontend Static Site
+  - type: web
+    name: univote-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_AUTH_API_URL
+        value: https://univote-backend.onrender.com
+      - key: REACT_APP_API_URL
+        value: https://univote-backend.onrender.com
+      - key: REACT_APP_CONTRACT_ADDRESS
+        value: 0x2F5A86462c5eE805A28098a0B01e7e4F0101bCA0
+      - key: REACT_APP_FIREBASE_API_KEY
+        value: AIzaSyClmDnW9VFXpjGrsaH5LpmaTR1LilVdxUM
+      - key: REACT_APP_FIREBASE_AUTH_DOMAIN
+        value: univote-208d0.firebaseapp.com
+      - key: REACT_APP_FIREBASE_PROJECT_ID
+        value: univote-208d0
+      - key: REACT_APP_FIREBASE_STORAGE_BUCKET
+        value: univote-208d0.firebasestorage.app
+      - key: REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+        value: 20996460032
+      - key: REACT_APP_FIREBASE_APP_ID
+        value: 1:20996460032:web:3817beadd181afc46852e5
+      - key: REACT_APP_FIREBASE_MEASUREMENT_ID
+        value: G-FP2PYJ0PS7
