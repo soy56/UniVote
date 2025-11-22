@@ -698,7 +698,17 @@ app.put('/profile', attachUser(true), async (req, res) => {
     res.status(500).json({ message: 'Unable to update profile.' });
   }
 });
-app.get('/election', attachUser(false), async (req, res) => {
+app.get('/debug-routes', (req, res) => {
+  const routes = [];
+  app._router.stack.forEach((middleware) => {
+    if (middleware.route) {
+      routes.push(middleware.route.path);
+    }
+  });
+  res.json(routes);
+});
+
+app.get('/election', async (req, res) => {
   try {
     const data = await loadElectionData();
     const users = await loadUsers();
