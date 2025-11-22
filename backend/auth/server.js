@@ -316,6 +316,11 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
+// TEST ROUTE - to verify route registration works
+app.get('/test-route', (req, res) => {
+  res.json({ message: 'Test route works!' });
+});
+
 app.post('/sign-up', async (req, res) => {
   try {
     const { username, email, password, department, acharyaId } = req.body || {};
