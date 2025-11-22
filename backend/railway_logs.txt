@@ -1,0 +1,47 @@
+Starting Container
+npm warn config production Use `--omit=dev` instead.
+
+> college-vote-backend@1.0.0 start
+> node auth/server.js
+
+???? Portal API listening on http://localhost:8080
+   Users file: /app/users.json
+   Election data: /app/data.json
+   Allowing origin(s): http://localhost:3000, https://frontend-g9k6dpkal-soy56s-projects.vercel.app
+   Update JWT_SECRET in production.
+Error: Origin not allowed by CORS policy.
+    at origin (/app/auth/server.js:308:23)
+Blocked CORS origin: https://frontend-mlhk07bpq-soy56s-projects.vercel.app
+    at /app/node_modules/cors/lib/index.js:219:13
+Error: Origin not allowed by CORS policy.
+    at optionsCallback (/app/node_modules/cors/lib/index.js:199:9)
+    at origin (/app/auth/server.js:308:23)
+    at corsMiddleware (/app/node_modules/cors/lib/index.js:204:7)
+    at Layer.handle [as handle_request] (/app/node_modules/express/lib/router/layer.js:95:5)
+    at /app/node_modules/cors/lib/index.js:219:13
+    at optionsCallback (/app/node_modules/cors/lib/index.js:199:9)
+    at corsMiddleware (/app/node_modules/cors/lib/index.js:204:7)
+    at Layer.handle [as handle_request] (/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/app/node_modules/express/lib/router/index.js:328:13)
+    at /app/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/app/node_modules/express/lib/router/index.js:346:12)
+    at next (/app/node_modules/express/lib/router/index.js:280:10)
+    at expressInit (/app/node_modules/express/lib/middleware/init.js:40:5)
+Blocked CORS origin: https://frontend-mlhk07bpq-soy56s-projects.vercel.app
+    at trim_prefix (/app/node_modules/express/lib/router/index.js:328:13)
+    at /app/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/app/node_modules/express/lib/router/index.js:346:12)
+    at next (/app/node_modules/express/lib/router/index.js:280:10)
+    at expressInit (/app/node_modules/express/lib/middleware/init.js:40:5)
+Blocked CORS origin: https://frontend-mlhk07bpq-soy56s-projects.vercel.app
+Error: Origin not allowed by CORS policy.
+    at origin (/app/auth/server.js:308:23)
+    at /app/node_modules/cors/lib/index.js:219:13
+    at optionsCallback (/app/node_modules/cors/lib/index.js:199:9)
+    at corsMiddleware (/app/node_modules/cors/lib/index.js:204:7)
+    at Layer.handle [as handle_request] (/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/app/node_modules/express/lib/router/index.js:328:13)
+    at /app/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/app/node_modules/express/lib/router/index.js:346:12)
+    at next (/app/node_modules/express/lib/router/index.js:280:10)
+    at expressInit (/app/node_modules/express/lib/middleware/init.js:40:5)

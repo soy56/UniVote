@@ -1,0 +1,94 @@
+{
+  "election": {
+    "title": "University Student Council Election 2024",
+    "description": "Cast your vote for the future of our university! Choose your representatives wisely.",
+    "bannerImage": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000",
+    "phase": "Voting",
+    "votingStartsAt": 1763835386,
+    "votingEndsAt": 1764443786,
+    "lastVoteAt": 0,
+    "lastVoter": null,
+    "eligibility": {
+      "departments": [],
+      "years": []
+    }
+  },
+  "positions": [
+    {
+      "id": "c56f1242-9a2c-42e8-a529-bf05886eedf5",
+      "title": "President",
+      "order": 1,
+      "maxVotes": 1
+    },
+    {
+      "id": "01f86a84-d116-4f7b-89c0-bbfb4bcb091c",
+      "title": "Vice President",
+      "order": 2,
+      "maxVotes": 1
+    },
+    {
+      "id": "e4f1c9db-de62-42e6-bbab-a58d123ad554",
+      "title": "General Secretary",
+      "order": 3,
+      "maxVotes": 1
+    }
+  ],
+  "candidates": [
+    {
+      "id": "a8be5938-fa61-4d8e-a645-c67dc719b8dc",
+      "positionId": "c56f1242-9a2c-42e8-a529-bf05886eedf5",
+      "name": "Sarah Chen",
+      "tagline": "Innovation for a Better Campus",
+      "manifesto": "I promise to upgrade the library facilities and improve campus Wi-Fi.",
+      "imageUri": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+      "voteCount": 0,
+      "createdAt": 1763838986640,
+      "updatedAt": 1763838986640
+    },
+    {
+      "id": "82f64a2a-d402-4794-927f-a5c24f00be98",
+      "positionId": "c56f1242-9a2c-42e8-a529-bf05886eedf5",
+      "name": "Marcus Johnson",
+      "tagline": "Voice of the Students",
+      "manifesto": "My goal is to ensure every student is heard and represented.",
+      "imageUri": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
+      "voteCount": 0,
+      "createdAt": 1763838986640,
+      "updatedAt": 1763838986640
+    },
+    {
+      "id": "2a71b587-b5ef-4f94-9edd-bba62d8203ce",
+      "positionId": "01f86a84-d116-4f7b-89c0-bbfb4bcb091c",
+      "name": "Emily Davis",
+      "tagline": "Unity in Diversity",
+      "manifesto": "Promoting cultural events and inclusivity on campus.",
+      "imageUri": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400",
+      "voteCount": 0,
+      "createdAt": 1763838986640,
+      "updatedAt": 1763838986640
+    },
+    {
+      "id": "0f6077f1-ce1b-4dd3-90e5-c67adb222c73",
+      "positionId": "01f86a84-d116-4f7b-89c0-bbfb4bcb091c",
+      "name": "David Kim",
+      "tagline": "Action, Not Just Words",
+      "manifesto": "Focusing on practical solutions for student housing and transport.",
+      "imageUri": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400",
+      "voteCount": 0,
+      "createdAt": 1763838986640,
+      "updatedAt": 1763838986640
+    },
+    {
+      "id": "0f347932-3915-4453-a0cf-914d533c8697",
+      "positionId": "e4f1c9db-de62-42e6-bbab-a58d123ad554",
+      "name": "Priya Patel",
+      "tagline": "Transparency & Accountability",
+      "manifesto": "Ensuring all council decisions are transparent and open.",
+      "imageUri": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=400",
+      "voteCount": 0,
+      "createdAt": 1763838986640,
+      "updatedAt": 1763838986640
+    }
+  ],
+  "votes": []
+}

@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "username": "admin",
+      "email": "admin@univote.com",
+      "passwordHash": "$2a$10$7/KaD4GtBrMZydYMzDnjQOiTgiZ6icdmZH/Slf9Rg/SWdoPWUiw7e",
+      "department": "Mechanical Engineering",
+      "acharyaId": "MECH-ADM-001",
+      "roles": [
+        "admin",
+        "voter"
+      ],
+      "createdAt": "2025-11-22T16:00:00.000Z",
+      "updatedAt": "2025-11-22T16:00:00.000Z"
+    },
+    {
+      "id": "inspector-001",
+      "username": "inspector",
+      "email": "inspector@univote.com",
+      "passwordHash": "$2a$10$7/KaD4GtBrMZydYMzDnjQOiTgiZ6icdmZH/Slf9Rg/SWdoPWUiw7e",
+      "department": "Mechanical Engineering",
+      "acharyaId": "MECH-INS-001",
+      "roles": [
+        "inspector",
+        "voter"
+      ],
+      "createdAt": "2025-11-22T16:00:00.000Z",
+      "updatedAt": "2025-11-22T16:00:00.000Z"
+    },
+    {
+      "id": "voter-001",
+      "username": "voter1",
+      "email": "voter1@univote.com",
+      "passwordHash": "$2a$10$7/KaD4GtBrMZydYMzDnjQOiTgiZ6icdmZH/Slf9Rg/SWdoPWUiw7e",
+      "department": "Mechanical Engineering",
+      "acharyaId": "MECH-STU-001",
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-22T16:00:00.000Z",
+      "updatedAt": "2025-11-22T16:00:00.000Z"
+    },
+    {
+      "id": "voter-002",
+      "username": "voter2",
+      "email": "voter2@univote.com",
+      "passwordHash": "$2a$10$7/KaD4GtBrMZydYMzDnjQOiTgiZ6icdmZH/Slf9Rg/SWdoPWUiw7e",
+      "department": "Mechanical Engineering",
+      "acharyaId": "MECH-STU-002",
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-22T16:00:00.000Z",
+      "updatedAt": "2025-11-22T16:00:00.000Z"
+    },
+    {
+      "id": "53e49a8d-e638-443b-892c-5faf3d7d2389",
+      "username": "wallet-2f5a86",
+      "email": "",
+      "walletAddress": "0x2F5A86462c5eE805A28098a0B01e7e4F0101bCA0",
+      "passwordHash": null,
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-22T16:49:44.700Z",
+      "updatedAt": "2025-11-22T16:49:44.700Z"
+    }
+  ]
+}

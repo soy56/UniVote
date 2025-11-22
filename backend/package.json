@@ -9,7 +9,8 @@
     "transfer-admin": "hardhat run scripts/transferAdmin.js",
     "auth-server": "node auth/server.js",
     "start": "node auth/server.js",
-    "hash-password": "node auth/utils/hashPassword.js"
+    "hash-password": "node auth/utils/hashPassword.js",
+    "seed": "node scripts/seed_db.js"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
