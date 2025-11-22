@@ -1,11 +1,13 @@
 services:
-  # Backend API Service
+  # Unified Service (Backend + Frontend)
   - type: web
-    name: univote-backend
+    name: univote-unified
     env: node
-    rootDir: backend
-    buildCommand: npm install
-    startCommand: node auth/server.js
+    rootDir: .
+    # Build command: Install ALL dependencies, then build frontend
+    buildCommand: npm run build
+    # Start command: Start the backend (which serves frontend)
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
@@ -15,18 +17,11 @@ services:
         generateValue: true
       - key: NODE_VERSION
         value: 20.11.0
-
-  # Frontend Static Site
-  - type: web
-    name: univote-frontend
-    env: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/build
-    envVars:
+      # Frontend Environment Variables (Used during build)
       - key: REACT_APP_AUTH_API_URL
-        value: https://univote-backend.onrender.com
+        value: /api
       - key: REACT_APP_API_URL
-        value: https://univote-backend.onrender.com
+        value: /api
       - key: REACT_APP_CONTRACT_ADDRESS
         value: 0x2F5A86462c5eE805A28098a0B01e7e4F0101bCA0
       - key: REACT_APP_FIREBASE_API_KEY
