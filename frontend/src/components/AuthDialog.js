@@ -181,7 +181,7 @@ const AuthDialog = ({
                   <Select
                     value={formValues.department}
                     label="Department"
-                    onChange={handleChange('department')}
+                    onChange={(e) => setFormValues(prev => ({ ...prev, department: e.target.value }))}
                   >
                     <MenuItem value=""><em>Select Department</em></MenuItem>
                     <MenuItem value="Computer Science">Computer Science</MenuItem>
