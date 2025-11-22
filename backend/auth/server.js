@@ -708,55 +708,12 @@ app.get('/debug-routes', (req, res) => {
   res.json(routes);
 });
 
-app.get('/election', async (req, res) => {
-  try {
-    const data = await loadElectionData();
-    const users = await loadUsers();
-
-    const snapshot = buildSnapshot(data);
-    const candidates = data.candidates.map(candidatePayload);
-    const fullActivity = buildActivityFeed(data, users);
-    const leader = findLeadingCandidate(data.candidates);
-
-    // Check if user is admin
-    const isAdmin = req.user && Array.isArray(req.user.roles) && req.user.roles.includes('admin');
-
-    // Sanitize activity for non-admin users (hide candidate names)
-    const activity = isAdmin ? fullActivity : fullActivity.map(item => ({
-      id: item.id,
-      candidateId: null,  // Hide candidate ID
-      candidateName: null, // Hide candidate name
-      voterId: item.voterId,
-      voterName: item.voterName,
-      timestamp: item.timestamp
-    }));
-
-    let votedPositions = [];
-    if (req.user) {
-      const userVotes = data.votes.filter((vote) => vote.userId === req.user.id);
-      votedPositions = userVotes.map(v => {
-        const c = data.candidates.find(cand => cand.id === v.candidateId);
-        return c ? c.positionId : null;
-      });
-    }
-
-    res.json({
-      snapshot,
-      candidates,
-      leader: leader ? candidatePayload(leader) : null,
-      activity,
-      votedPositions
-    });
-  } catch (error) {
-    console.error('Get election error:', error);
-    res.status(500).json({
-      message: 'Failed to load election data.',
-      error: error.message,
-      stack: error.stack,
-      path: DATA_FILE
-    });
-  }
+// Simple test election endpoint
+app.get('/election', (req, res) => {
+  res.json({ message: 'Election endpoint works!', timestamp: new Date().toISOString() });
 });
+
+
 
 app.get('/positions', async (req, res) => {
   const data = await loadElectionData();
