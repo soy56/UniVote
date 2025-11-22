@@ -1569,6 +1569,10 @@ app.get(['/api/version', '/version', '/api/v1/version'], (req, res) => {
   });
 });
 
+app.get('/health-check-custom', (req, res) => {
+  res.json({ status: 'I AM HERE', timestamp: new Date().toISOString() });
+});
+
 // Catch-all 404 handler
 app.use((req, res) => {
   res.status(404).json({
