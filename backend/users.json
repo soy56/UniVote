@@ -94,6 +94,19 @@
       ],
       "createdAt": "2025-11-22T19:41:35.682Z",
       "updatedAt": "2025-11-22T19:41:35.682Z"
+    },
+    {
+      "id": "79d4d077-3fd5-4046-af5b-d3eb6f32e1ee",
+      "username": "testuser",
+      "email": "test@test.com",
+      "passwordHash": "$2a$10$zySEP3dOE7FjSzX2ylxrk.QzWgyzqvoFWXprVfpQFWPiXHzBlYk/G",
+      "department": "CS",
+      "acharyaId": "TEST001",
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-22T20:03:59.713Z",
+      "updatedAt": "2025-11-22T20:03:59.713Z"
     }
   ]
 }
