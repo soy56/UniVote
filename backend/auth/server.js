@@ -20,7 +20,8 @@ const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'http://localhost:3000';
 const DEFAULT_ALLOWED_ORIGINS = [
   'http://localhost:3000',
   'https://univote-frontend.netlify.app',
-  'https://soy56.github.io'
+  'https://soy56.github.io',
+  'https://soy56.github.io/UniVote'
 ];
 const USERS_FILE = path.join(__dirname, '..', 'users.json');
 const DATA_FILE = path.join(__dirname, '..', 'data.json');
