@@ -1579,6 +1579,7 @@ app.use((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
+  console.log('🚀 UniVote Backend v1.1 - Deployment Triggered');
   const displayHost = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
   console.log(`🔐 Portal API listening on http://${displayHost}:${PORT}`);
   console.log('   Users file:', USERS_FILE);
