@@ -17,7 +17,11 @@ const PORT = parseInt(process.env.PORT, 10) || 4000;
 const JWT_SECRET = process.env.JWT_SECRET || 'univote_secret_key_2024_secure';
 const JWT_TTL = '24h';
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'http://localhost:3000';
-const DEFAULT_ALLOWED_ORIGINS = ['http://localhost:3000', 'https://univote-frontend.netlify.app'];
+const DEFAULT_ALLOWED_ORIGINS = [
+  'http://localhost:3000',
+  'https://univote-frontend.netlify.app',
+  'https://soy56.github.io'
+];
 const USERS_FILE = path.join(__dirname, '..', 'users.json');
 const DATA_FILE = path.join(__dirname, '..', 'data.json');
 
