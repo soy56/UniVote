@@ -1,6 +1,21 @@
 {
   "users": [
     {
+      "id": "dev-001",
+      "username": "developer",
+      "email": "dev@univote.com",
+      "passwordHash": "$2a$10$7/KaD4GtBrMZydYMzDnjQOiTgiZ6icdmZH/Slf9Rg/SWdoPWUiw7e",
+      "department": "Computer Science",
+      "acharyaId": "DEV-001",
+      "roles": [
+        "developer",
+        "admin",
+        "voter"
+      ],
+      "createdAt": "2025-11-22T16:00:00.000Z",
+      "updatedAt": "2025-11-22T16:00:00.000Z"
+    },
+    {
       "id": "admin-001",
       "username": "admin",
       "email": "admin@univote.com",
@@ -65,6 +80,19 @@
       ],
       "createdAt": "2025-11-22T16:49:44.700Z",
       "updatedAt": "2025-11-22T16:49:44.700Z"
+    },
+    {
+      "id": "f2f85ed3-9797-4389-9438-a17316ce789e",
+      "username": "Souvik Patra",
+      "email": "souvik56patra@gmail.com",
+      "passwordHash": "$2a$10$yVbQoDzbOcavziBcr0bFounNd//ri9pe.M4mJRxStKXau5RZ3t7pm",
+      "department": "Mechanical",
+      "acharyaId": "AIT24BEME074",
+      "roles": [
+        "voter"
+      ],
+      "createdAt": "2025-11-22T19:41:35.682Z",
+      "updatedAt": "2025-11-22T19:41:35.682Z"
     }
   ]
 }
