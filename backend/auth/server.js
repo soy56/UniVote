@@ -2,15 +2,50 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs/promises');
-try {
-  const content = await fs.readFile(filePath, 'utf8');
-  return JSON.parse(content);
-} catch (error) {
-  if (error.code === 'ENOENT') {
-    return defaultValue;
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { v4: uuid } = require('uuid');
+const { ethers } = require('ethers');
+const crypto = require('crypto');
+const QRCode = require('qrcode');
+const http = require('http');
+const { Server } = require('socket.io');
+
+const PORT = process.env.PORT || 4000;
+const JWT_SECRET = process.env.JWT_SECRET || 'univote_secret_key_2024_secure';
+const JWT_TTL = '24h';
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'http://localhost:3000';
+const DEFAULT_ALLOWED_ORIGINS = ['http://localhost:3000'];
+const USERS_FILE = path.join(__dirname, '..', 'users.json');
+const DATA_FILE = path.join(__dirname, '..', 'data.json');
+
+const defaultElectionData = {
+  election: {
+    title: 'University Election 2024',
+    description: 'Cast your vote for the next student council.',
+    bannerImage: '',
+    phase: 'Draft',
+    votingStartsAt: 0,
+    votingEndsAt: 0,
+    lastVoteAt: 0,
+    lastVoter: null,
+    eligibility: { departments: [], years: [] }
+  },
+  positions: [],
+  candidates: [],
+  votes: []
+};
+
+const readJson = async (filePath, defaultValue) => {
+  try {
+    const content = await fs.readFile(filePath, 'utf8');
+    return JSON.parse(content);
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return defaultValue;
+    }
+    throw error;
   }
-  throw error;
-}
 };
 
 const writeJson = async (filePath, data) => {
