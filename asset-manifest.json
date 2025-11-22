@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/UniVote/static/css/main.fb2653e6.css",
-    "main.js": "/UniVote/static/js/main.f543835f.js",
+    "main.js": "/UniVote/static/js/main.e4957496.js",
     "index.html": "/UniVote/index.html",
     "main.fb2653e6.css.map": "/UniVote/static/css/main.fb2653e6.css.map",
-    "main.f543835f.js.map": "/UniVote/static/js/main.f543835f.js.map"
+    "main.e4957496.js.map": "/UniVote/static/js/main.e4957496.js.map"
   },
   "entrypoints": [
     "static/css/main.fb2653e6.css",
-    "static/js/main.f543835f.js"
+    "static/js/main.e4957496.js"
   ]
 }
