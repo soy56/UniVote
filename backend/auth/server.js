@@ -1388,6 +1388,23 @@ io.on('connection', (socket) => {
 });
 
 
+// Version endpoint to verify deployment
+app.get('/api/version', (req, res) => {
+  res.json({
+    version: '1.0.0',
+    commit: 'latest-with-debug',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Catch-all 404 handler
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Route not found',
+    path: req.path,
+    method: req.method
+  });
+});
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`🔐 Portal API listening on http://localhost:${PORT}`);
