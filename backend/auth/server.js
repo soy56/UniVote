@@ -738,7 +738,7 @@ app.get('/debug-routes', (req, res) => {
 
 
 // Support multiple route aliases to tolerate different deployment path expectations
-app.get(['/election', '/api/election', '/api/v1/election'], async (req, res) => {
+app.get(['/election', '/api/election', '/api/v1/election'], attachUser(false), async (req, res) => {
   try {
     const data = await loadElectionData();
     const users = await loadUsers();
