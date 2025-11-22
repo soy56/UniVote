@@ -110,5 +110,17 @@
       "createdAt": "2025-11-21T18:08:28.885Z",
       "updatedAt": "2025-11-21T18:08:28.885Z"
     }
+    ,
+    {
+      "id": "c8752f6e-f217-408c-8076-4585403513cc",
+      "username": "dev_user",
+      "email": "dev_user@univote.io",
+      "passwordHash": "$2a$10$HxWXK9P6Olc/7YsIOaWUwuqYJkO/odxy86EXVwMm328cGzpMDIlV2",
+      "roles": [
+        "developer"
+      ],
+      "createdAt": "2025-11-22T16:07:57.551Z",
+      "updatedAt": "2025-11-22T16:07:57.551Z"
+    }
   ]
 }
