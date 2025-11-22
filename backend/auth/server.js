@@ -10,6 +10,8 @@ const crypto = require('crypto');
 const QRCode = require('qrcode');
 const http = require('http');
 const { Server } = require('socket.io');
+const PDFDocument = require('pdfkit');
+const { createArrayCsvWriter } = require('csv-writer');
 
 const PORT = parseInt(process.env.PORT, 10) || 4000;
 const JWT_SECRET = process.env.JWT_SECRET || 'univote_secret_key_2024_secure';
@@ -1124,6 +1126,149 @@ app.post('/votes', attachUser(true), async (req, res) => {
   });
 });
 
+// ============================================
+// EXPORT UTILITY FUNCTIONS
+// ============================================
+
+const generatePDF = (data, snapshot) => {
+  const doc = new PDFDocument();
+
+  // Header
+  doc.fontSize(20).text(snapshot.title || 'Election Results', { align: 'center' });
+  doc.moveDown();
+  doc.fontSize(12).text(snapshot.description || '', { align: 'center' });
+  doc.moveDown();
+
+  // Summary Statistics
+  doc.fontSize(14).text('Election Summary', { underline: true });
+  doc.moveDown(0.5);
+  doc.fontSize(10);
+  doc.text(`Status: ${snapshot.phase}`);
+  doc.text(`Total Candidates: ${snapshot.candidateCount}`);
+  doc.text(`Total Votes: ${snapshot.totalVotes}`);
+
+  if (snapshot.votingStartsAt) {
+    doc.text(`Voting Started: ${new Date(snapshot.votingStartsAt * 1000).toLocaleString()}`);
+  }
+  if (snapshot.votingEndsAt) {
+    doc.text(`Voting Ended: ${new Date(snapshot.votingEndsAt * 1000).toLocaleString()}`);
+  }
+
+  doc.moveDown();
+
+  // Results by Position
+  const positionMap = new Map();
+
+  // Group candidates by position
+  data.candidates.forEach(candidate => {
+    const posId = candidate.positionId || 'unassigned';
+    if (!positionMap.has(posId)) {
+      positionMap.set(posId, []);
+    }
+    positionMap.get(posId).push(candidate);
+  });
+
+  // Render each position
+  for (const [posId, candidates] of positionMap.entries()) {
+    const position = data.positions.find(p => p.id === posId);
+    const posTitle = position ? position.title : 'Unassigned Position';
+
+    doc.fontSize(14).text(posTitle, { underline: true });
+    doc.moveDown(0.5);
+
+    // Sort candidates by vote count (descending)
+    const sortedCandidates = candidates.sort((a, b) => (b.voteCount || 0) - (a.voteCount || 0));
+
+    doc.fontSize(10);
+    sortedCandidates.forEach((candidate, index) => {
+      const rank = index + 1;
+      const votes = candidate.voteCount || 0;
+      doc.text(`${rank}. ${candidate.name} - ${votes} vote${votes !== 1 ? 's' : ''}`);
+      if (candidate.tagline) {
+        doc.fontSize(9).text(`   ${candidate.tagline}`, { italics: true });
+        doc.fontSize(10);
+      }
+    });
+
+    doc.moveDown();
+  }
+
+  // Footer
+  doc.fontSize(8).text(
+    `Generated on ${new Date().toLocaleString()}`,
+    { align: 'center' }
+  );
+
+  return doc;
+};
+
+const generateCSV = async (data, filePath) => {
+  const csvWriter = createArrayCsvWriter({
+    path: filePath,
+    header: ['Position', 'Candidate Name', 'Tagline', 'Vote Count']
+  });
+
+  const records = [];
+
+  // Group by position
+  const positionMap = new Map();
+  data.candidates.forEach(candidate => {
+    const posId = candidate.positionId || 'unassigned';
+    if (!positionMap.has(posId)) {
+      positionMap.set(posId, []);
+    }
+    positionMap.get(posId).push(candidate);
+  });
+
+  // Build records
+  for (const [posId, candidates] of positionMap.entries()) {
+    const position = data.positions.find(p => p.id === posId);
+    const posTitle = position ? position.title : 'Unassigned';
+
+    // Sort by vote count
+    const sorted = candidates.sort((a, b) => (b.voteCount || 0) - (a.voteCount || 0));
+
+    sorted.forEach(candidate => {
+      records.push([
+        posTitle,
+        candidate.name,
+        candidate.tagline || '',
+        candidate.voteCount || 0
+      ]);
+    });
+  }
+
+  await csvWriter.writeRecords(records);
+};
+
+const generateDetailedVoteCSV = async (data, filePath) => {
+  const csvWriter = createArrayCsvWriter({
+    path: filePath,
+    header: ['Vote ID', 'Voter ID', 'Candidate ID', 'Candidate Name', 'Position', 'Timestamp']
+  });
+
+  const candidateMap = new Map(data.candidates.map(c => [c.id, c]));
+  const positionMap = new Map(data.positions.map(p => [p.id, p]));
+
+  const records = data.votes
+    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
+    .map(vote => {
+      const candidate = candidateMap.get(vote.candidateId);
+      const position = candidate?.positionId ? positionMap.get(candidate.positionId) : null;
+
+      return [
+        vote.id,
+        vote.userId,
+        vote.candidateId,
+        candidate?.name || 'Unknown',
+        position?.title || 'Unassigned',
+        new Date(vote.createdAt).toLocaleString()
+      ];
+    });
+
+  await csvWriter.writeRecords(records);
+};
+
 // Export Results to PDF
 app.get('/export/pdf', attachUser(true), requireAdmin, async (req, res) => {
   try {
@@ -1414,7 +1559,8 @@ app.use((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`🔐 Portal API listening on http://localhost:${PORT}`);
+  const displayHost = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+  console.log(`🔐 Portal API listening on http://${displayHost}:${PORT}`);
   console.log('   Users file:', USERS_FILE);
   console.log('   Election data:', DATA_FILE);
   console.log('   Allowing origin(s):', allowedOrigins.join(', '));
