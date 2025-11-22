@@ -38,10 +38,10 @@ export const signIn = async ({ identifier, password }) =>
     body: JSON.stringify({ identifier, password })
   });
 
-export const signUp = async ({ username, email, password }) =>
+export const signUp = async ({ username, email, password, department, acharyaId }) =>
   makeRequest('/sign-up', {
     method: 'POST',
-    body: JSON.stringify({ username, email, password })
+    body: JSON.stringify({ username, email, password, department, acharyaId })
   });
 
 export const requestWalletNonce = async (address) =>
