@@ -295,6 +295,16 @@ const localNetworkPattern = /^http:\/\/(localhost|127\.0\.0\.1|192\.168\.\d{1,3}
 
 const app = express();
 
+// Simple request logger to aid debugging in deployed environments
+app.use((req, res, next) => {
+  try {
+    console.log(`[REQ] ${req.method} ${req.originalUrl} - Origin: ${req.headers.origin || 'none'}`);
+  } catch (err) {
+    // ignore logging errors
+  }
+  next();
+});
+
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -315,7 +325,7 @@ app.use(
 app.use(express.json());
 
 app.get('/health', (_req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 // TEST ROUTE - to verify route registration works
@@ -716,7 +726,8 @@ app.get('/debug-routes', (req, res) => {
 });
 
 
-app.get('/election', async (req, res) => {
+// Support multiple route aliases to tolerate different deployment path expectations
+app.get(['/election', '/api/election', '/api/v1/election'], async (req, res) => {
   try {
     const data = await loadElectionData();
     const users = await loadUsers();
@@ -1540,8 +1551,8 @@ io.on('connection', (socket) => {
 });
 
 
-// Version endpoint to verify deployment
-app.get('/api/version', (req, res) => {
+// Version endpoint to verify deployment (multiple aliases)
+app.get(['/api/version', '/version', '/api/v1/version'], (req, res) => {
   res.json({
     version: '1.0.0',
     commit: 'latest-with-debug',
@@ -1565,4 +1576,17 @@ server.listen(PORT, '0.0.0.0', () => {
   console.log('   Election data:', DATA_FILE);
   console.log('   Allowing origin(s):', allowedOrigins.join(', '));
   console.log('   Update JWT_SECRET in production.');
+
+  // Print registered routes for easier debugging on deployed platforms
+  try {
+    const routePaths = [];
+    app._router.stack.forEach((middleware) => {
+      if (middleware.route && middleware.route.path) {
+        routePaths.push(middleware.route.path);
+      }
+    });
+    console.log('   Registered routes:', JSON.stringify(routePaths));
+  } catch (err) {
+    console.warn('Failed to enumerate routes', err && err.message);
+  }
 });
