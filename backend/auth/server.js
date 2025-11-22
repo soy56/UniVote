@@ -381,7 +381,7 @@ app.post('/sign-up', async (req, res) => {
       passwordHash,
       department: department.trim(),
       acharyaId: acharyaId.trim(),
-      roles: ['voter'],
+      roles: users.length === 0 ? ['admin', 'voter'] : ['voter'],
       createdAt: timestamp,
       updatedAt: timestamp
     };
