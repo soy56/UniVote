@@ -60,6 +60,19 @@ const AuthDialog = ({
     setFormValues((prev) => ({ ...prev, [field]: value }));
   };
 
+  const handleDepartmentChange = (event) => {
+    const department = event.target.value;
+    setFormValues((prev) => ({
+      ...prev,
+      department: department
+    }));
+    // Clear validation error when user selects department
+    if (validationError === 'Department is required.') {
+      setValidationError('');
+    }
+  };
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setValidationError('');
@@ -177,11 +190,12 @@ const AuthDialog = ({
                   required
                 />
                 <FormControl fullWidth required>
-                  <InputLabel>Department</InputLabel>
+                  <InputLabel id="department-label">Department</InputLabel>
                   <Select
+                    labelId="department-label"
                     value={formValues.department}
                     label="Department"
-                    onChange={(e) => setFormValues(prev => ({ ...prev, department: e.target.value }))}
+                    onChange={handleDepartmentChange}
                   >
                     <MenuItem value=""><em>Select Department</em></MenuItem>
                     <MenuItem value="Computer Science">Computer Science</MenuItem>
