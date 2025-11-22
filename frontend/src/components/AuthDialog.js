@@ -7,7 +7,10 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  InputLabel,
   MenuItem,
+  Select,
   Stack,
   TextField,
   Typography
@@ -60,6 +63,7 @@ const AuthDialog = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
     setValidationError('');
+
 
     try {
       if (mode === 'signup') {
@@ -172,23 +176,23 @@ const AuthDialog = ({
                   fullWidth
                   required
                 />
-                <TextField
-                  select
-                  label="Department"
-                  value={formValues.department}
-                  onChange={handleChange('department')}
-                  fullWidth
-                  required
-                >
-                  <MenuItem value=""><em>Select Department</em></MenuItem>
-                  <MenuItem value="Computer Science">Computer Science</MenuItem>
-                  <MenuItem value="Electronics">Electronics & Communication</MenuItem>
-                  <MenuItem value="Mechanical">Mechanical Engineering</MenuItem>
-                  <MenuItem value="Civil">Civil Engineering</MenuItem>
-                  <MenuItem value="Electrical">Electrical Engineering</MenuItem>
-                  <MenuItem value="Information Technology">Information Technology</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
-                </TextField>
+                <FormControl fullWidth required>
+                  <InputLabel>Department</InputLabel>
+                  <Select
+                    value={formValues.department}
+                    label="Department"
+                    onChange={handleChange('department')}
+                  >
+                    <MenuItem value=""><em>Select Department</em></MenuItem>
+                    <MenuItem value="Computer Science">Computer Science</MenuItem>
+                    <MenuItem value="Electronics">Electronics & Communication</MenuItem>
+                    <MenuItem value="Mechanical">Mechanical Engineering</MenuItem>
+                    <MenuItem value="Civil">Civil Engineering</MenuItem>
+                    <MenuItem value="Electrical">Electrical Engineering</MenuItem>
+                    <MenuItem value="Information Technology">Information Technology</MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
+                  </Select>
+                </FormControl>
                 <TextField
                   label="Password"
                   type="password"
