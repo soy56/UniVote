@@ -328,6 +328,11 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+// Simple text status endpoint for static hosts/proxies
+app.get('/status.txt', (_req, res) => {
+  res.type('text/plain').send('ok');
+});
+
 // TEST ROUTE - to verify route registration works
 app.get('/test-route', (req, res) => {
   res.json({ message: 'Test route works!' });
