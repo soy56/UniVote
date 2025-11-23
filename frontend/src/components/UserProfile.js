@@ -53,7 +53,7 @@ const UserProfile = ({ session, onNotify, onProfileUpdate }) => {
 
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:4000/profile', {
+            const response = await fetch(`${API_BASE_URL}/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

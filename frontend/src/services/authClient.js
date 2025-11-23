@@ -1,4 +1,6 @@
-const API_BASE = process.env.REACT_APP_AUTH_API_URL || 'http://localhost:4000';
+import API_BASE_URL from '../config';
+
+const API_BASE = API_BASE_URL;
 
 const STORAGE_KEY = 'univote::authSession';
 

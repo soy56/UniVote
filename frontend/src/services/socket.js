@@ -1,6 +1,8 @@
 import { io } from 'socket.io-client';
 
-const SOCKET_URL = process.env.REACT_APP_AUTH_API_URL || 'http://localhost:4000';
+import API_BASE_URL from '../config';
+
+const SOCKET_URL = API_BASE_URL;
 
 let socket;
 

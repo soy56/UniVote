@@ -51,6 +51,7 @@ import ActivityFeed from './ActivityFeed';
 import ExportButtons from './ExportButtons';
 import { fetchUsers, toggleUserBan, toggleUserRole } from '../services/apiClient';
 import { getSocket } from '../services/socket';
+import API_BASE_URL from '../config';
 
 const initialCandidateState = {
   name: '',
@@ -147,7 +148,7 @@ const AdminPanel = ({
     if (!positionForm.title) return;
     setBusyAction('create-position');
     try {
-      const res = await fetch('http://localhost:4000/positions', {
+      const res = await fetch(`${API_BASE_URL}/positions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -178,7 +179,7 @@ const AdminPanel = ({
     console.log('Proceeding with deletion...');
     setBusyAction(`delete-position-${id}`);
     try {
-      const url = `http://localhost:4000/positions/${id}`;
+      const url = `${API_BASE_URL}/positions/${id}`;
       console.log('DELETE request to:', url);
       console.log('With token:', adminProfile.token);
 
@@ -212,7 +213,7 @@ const AdminPanel = ({
     console.log('handleDeleteCandidate called with id:', id);
     setBusyAction(`delete-candidate-${id}`);
     try {
-      const res = await fetch(`http://localhost:4000/candidates/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/candidates/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${adminProfile.token}` }
       });
@@ -1061,7 +1062,7 @@ const AdminPanel = ({
       </Card>
 
       <ExportButtons
-        apiUrl={process.env.REACT_APP_API_URL || 'http://localhost:4000'}
+        apiUrl={API_BASE_URL}
         authToken={adminProfile?.token || ''}
       />
 
