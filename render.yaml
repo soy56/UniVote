@@ -6,6 +6,8 @@ services:
     rootDir: backend
     buildCommand: npm install
     startCommand: node auth/server.js
+    autoDeploy: true
+    branch: main
     envVars:
       - key: NODE_ENV
         value: production
