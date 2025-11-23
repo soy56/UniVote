@@ -1575,6 +1575,35 @@ app.get('/health-check-custom', (req, res) => {
   res.json({ status: 'I AM HERE', timestamp: new Date().toISOString() });
 });
 
+
+// Data health check endpoint
+app.get('/api/health/data', async (req, res) => {
+  try {
+    const data = await readJson(DATA_FILE, null);
+    if (!data) {
+      return res.status(404).json({ status: 'ERROR', message: 'Data file not found or empty' });
+    }
+    
+    res.json({
+      status: 'OK',
+      message: 'Data file accessible and valid',
+      stats: {
+        candidates: Array.isArray(data.candidates) ? data.candidates.length : 0,
+        votes: Array.isArray(data.votes) ? data.votes.length : 0,
+        positions: Array.isArray(data.positions) ? data.positions.length : 0
+      },
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Data health check error:', error);
+    res.status(500).json({ 
+      status: 'ERROR', 
+      message: 'Failed to read data file', 
+      error: error.message 
+    });
+  }
+});
+
 // Catch-all 404 handler
 app.use((req, res) => {
   res.status(404).json({
