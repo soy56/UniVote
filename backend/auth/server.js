@@ -318,6 +318,7 @@ app.use(
         return callback(null, true);
       }
 
+
       if (allowedOrigins.includes(origin) || localNetworkPattern.test(origin)) {
         return callback(null, true);
       }
@@ -330,8 +331,25 @@ app.use(
 );
 app.use(express.json());
 
+// Root route
+app.get('/', (_req, res) => {
+  res.json({
+    name: 'UniVote API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/health',
+      election: '/election',
+      signUp: '/sign-up',
+      signIn: '/sign-in',
+      profile: '/profile'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.get('/health', (_req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString(), version: '2025-11-22-explicit-startcmd' });
+  res.json({ status: 'OK', timestamp: new Date().toISOString(), version: '2025-11-23-root-route-fix' });
 });
 
 // Simple text status endpoint for static hosts/proxies
@@ -1583,7 +1601,7 @@ app.get('/api/health/data', async (req, res) => {
     if (!data) {
       return res.status(404).json({ status: 'ERROR', message: 'Data file not found or empty' });
     }
-    
+
     res.json({
       status: 'OK',
       message: 'Data file accessible and valid',
@@ -1596,10 +1614,10 @@ app.get('/api/health/data', async (req, res) => {
     });
   } catch (error) {
     console.error('Data health check error:', error);
-    res.status(500).json({ 
-      status: 'ERROR', 
-      message: 'Failed to read data file', 
-      error: error.message 
+    res.status(500).json({
+      status: 'ERROR',
+      message: 'Failed to read data file',
+      error: error.message
     });
   }
 });
