@@ -4,7 +4,7 @@ services:
     name: univote-backend
     env: node
     rootDir: backend
-    buildCommand: npm install
+    buildCommand: ./render-build.sh
     startCommand: node auth/server.js
     autoDeploy: true
     branch: main
